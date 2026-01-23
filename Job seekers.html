@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Mediajobsite | Professional Jobs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font:16px/1.6 'Inter',sans-serif}
+body{background:linear-gradient(135deg,#f5f7fa,#c3cfe2);color:#2d3748}
+.container{max-width:1200px;margin:0 auto;padding:15px}
+header{background:linear-gradient(135deg,#0b3d91,#1e40af);color:#fff;padding:2rem 1rem;text-align:center;box-shadow:0 15px 40px rgba(11,61,145,.3)}
+h1{font-size:clamp(1.8rem,5vw,2.5rem);font-weight:700;margin-bottom:.5rem}
+.tagline{font-size:clamp(.9rem,3vw,1.1rem);opacity:.95}
+.section{background:#fff;margin:1.5rem 0;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.1);overflow:hidden}
+.section-header{background:linear-gradient(135deg,#0b3d91,#1e40af);color:#fff;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:.75rem;font-size:clamp(1.1rem,4vw,1.4rem)}
+.section-content{padding:1.8rem}
+.notice{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:1.2rem;border-radius:16px;margin-bottom:1.5rem}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;background:#f8fafc;padding:10px;border-radius:16px 16px 0 0;margin:0 -1.8rem 0 0}
+.tab{flex:1;padding:.9rem 1.2rem;border:none;background:rgba(255,255,255,.8);border-radius:12px;cursor:pointer;font-weight:600;color:#64748b;transition:all .3s;font-size:clamp(.85rem,2.5vw,1rem);min-width:100px;position:relative;overflow:hidden}
+.tab.active{background:linear-gradient(135deg,#0b3d91,#1e40af);color:#fff;transform:translateY(-2px);box-shadow:0 8px 25px rgba(11,61,145,.3)}
+.tab-content{display:none;padding:1.5rem;background:#fafbfc;border-radius:0 0 20px 20px}
+.tab-content.active{display:block}
+.tool-feature{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:2.5rem;border-radius:24px;margin:1rem 0;text-align:center;position:relative;overflow:hidden;box-shadow:0 25px 60px rgba(102,126,234,.3);transition:all .4s;cursor:pointer}
+.tool-feature::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transition:left 0.7s}
+.tool-feature:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 35px 80px rgba(102,126,234,.4)}
+.tool-feature:hover::before{left:100%}
+.tool-feature i{font-size:4rem;margin-bottom:1rem;opacity:.95}
+.tool-feature h3{font-size:1.4rem;font-weight:700;margin-bottom:.8rem}
+.tool-feature p{font-size:1rem;line-height:1.7;opacity:.95}
+.tool-card,.job-card{display:block;padding:1.5rem;background:#fff;border-radius:16px;margin-bottom:1.2rem;box-shadow:0 10px 40px rgba(0,0,0,.08);transition:all .3s}
+.tool-card:hover,.job-card:hover{transform:translateY(-6px);box-shadow:0 25px 60px rgba(0,0,0,.15)}
+.job-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:start;gap:1rem;margin-bottom:1rem}
+.job-title{font-size:clamp(1.1rem,4vw,1.4rem);font-weight:700;margin-bottom:.3rem;flex:1}
+.job-type{padding:.3rem .8rem;border-radius:20px;font-size:.8rem;font-weight:600;color:#fff;flex-shrink:0}
+.onsite{background:#ef4444}.remote{background:#10b981}.hybrid{background:#f59e0b}
+.job-meta{display:flex;flex-wrap:wrap;gap:.5rem;color:#64748b;font-size:.9rem}
+.job-actions{display:flex;align-items:center;gap:.3rem;margin-top:.5rem;flex-wrap:nowrap;overflow-x:auto;padding:.3rem 0;max-width:100%}
+.share-to{margin:0 .5rem .5rem 0;font-size:.85rem;color:#64748b;font-weight:500;white-space:nowrap;flex-shrink:0}
+.social-btn{padding:.5rem;border:none;border-radius:6px;cursor:pointer;font-size:.9rem;transition:all .3s;display:flex;align-items:center;justify-content:center;color:#fff;width:40px;height:40px;margin:0;flex-shrink:0}
+.fb{background:#1877f2}.li{background:#0a66c2}.wa{background:#25d366}.tw{background:#1da1f2}
+.like-btn{padding:.7rem;border:none;border-radius:10px;cursor:pointer;font-weight:600;display:flex;align-items:center;gap:.4rem;font-size:.85rem;transition:all .3s;flex:1;background:#f8fafc;color:#64748b;border:1px solid #e2e8f0;min-width:110px;justify-content:center}
+.like-btn.liked{background:#ef4444;color:#fff;border-color:#ef4444}
+input,textarea,select{width:100%;padding:1rem;border:2px solid #e2e8f0;border-radius:12px;font-size:1rem;margin-bottom:1rem;transition:all .3s;background:#fff;box-sizing:border-box}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#0b3d91;box-shadow:0 0 0 3px rgba(11,61,145,.1);transform:translateY(-1px)}
+textarea{min-height:100px;resize:vertical}
+.btn{padding:1rem 2rem;border:none;background:linear-gradient(135deg,#0b3d91,#1e40af);color:#fff;font-weight:600;border-radius:12px;cursor:pointer;width:100%;transition:all .3s;font-size:1rem;display:block}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(11,61,145,.3)}
+.btn:active{transform:translateY(0)}
+.btn-sm{width:auto;padding:.6rem 1rem;font-size:.9rem}
+.btn-danger{background:#ef4444}
+.success{display:none;background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:1.5rem;border-radius:16px;margin-top:1rem;text-align:center;box-shadow:0 15px 40px rgba(16,185,129,.3);line-height:1.6}
+.success i{font-size:1.2rem;margin-right:.5rem}
+.flex{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap}
+.grid{display:grid;gap:1.5rem}@media (min-width:768px){.grid{grid-template-columns:1fr 1fr}}
+.chat-box{height:clamp(200px,40vh,300px);overflow:auto;border:2px solid #e2e8f0;padding:1rem;margin:1rem 0;background:#f9fafb;border-radius:12px}
+.msg{padding:.8rem;margin:.5rem 0;border-radius:18px;max-width:80%;font-size:.9rem;word-wrap:break-word}
+.msg-admin{background:linear-gradient(135deg,#0b3d91,#1e40af);color:#fff;margin-left:auto}
+.inbox-item{cursor:pointer;padding:1rem;border-radius:12px;background:#f8fafc;margin-bottom:.5rem;transition:all .2s;display:flex;justify-content:space-between;align-items:center}
+.inbox-item:hover,.inbox-item.active{background:#e2e8f0}
+.inbox-header{font-weight:600;color:#2d3748;flex:1}
+.inbox-controls{display:flex;gap:.5rem;align-items:center}
+.inbox-checkbox{width:18px;height:18px;margin:0;cursor:pointer}
+#selectAllInbox{width:18px;height:18px;margin:0 1rem 0 0;cursor:pointer}
+#deleteSelected{display:none;padding:.5rem 1rem;border:none;background:#ef4444;color:#fff;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:600;transition:all .3s}
+#deleteSelected:hover{background:#dc2626}
+#adminPanel{display:none}
+.job-admin-item{cursor:pointer;padding:1rem;border-radius:8px;background:#f8fafc;margin-bottom:.5rem;transition:all .2s}
+.job-admin-item:hover{background:#e2e8f0}
+@media (max-width:768px){
+.tabs{flex-direction:column}.tab{margin-bottom:5px}
+.job-header{flex-direction:column;align-items:start}.job-actions{flex-direction:row;flex-wrap:nowrap;overflow-x:auto;padding:.2rem 0;gap:.2rem}
+.grid{grid-template-columns:1fr}
+.tool-feature{padding:2rem 1.5rem}
+.tool-feature i{font-size:3rem}
+}
+@media (max-width:480px){.container{padding:10px}.section-content{padding:1.2rem}}
+footer{background:#1e293b;color:#94a3b8;text-align:center;padding:2rem 1rem;margin-top:3rem;font-size:.95rem}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<h1><i class="fas fa-briefcase"></i> E-Mediajobsite</h1>
+<p class="tagline">Verified Jobs • Career Tools • Admin </p>
+</div>
+</header>
+
+<div class="container">
+<div class="notice flex"><i class="fas fa-info-circle"></i><strong>Official:</strong> All jobs verified by Eminent Media</div>
+
+<!-- LIVE JOBS -->
+<section class="section">
+<div class="section-header flex"><i class="fas fa-list"></i><h2>Live Opportunities</h2></div>
+<div class="section-content" id="jobs"></div>
+</section>
+
+<!-- CAREER TOOLS -->
+<section class="section">
+<div class="section-header flex"><i class="fas fa-rocket"></i><h2>Career Suite</h2></div>
+<div class="section-content">
+<div class="tabs">
+<button class="tab active" data-tab="guide"><i class="fas fa-lightbulb"></i> Guide</button>
+<button class="tab" data-tab="ats"><i class="fas fa-file"></i> ATS</button>
+<button class="tab" data-tab="cover"><i class="fas fa-edit"></i> Cover</button>
+</div>
+<div id="guide" class="tab-content active">
+<div class="tool-feature" onclick="window.open('https://mtechconsult.github.io/E-Media-Job-Guide/','_blank')">
+<i class="fas fa-chart-line"></i>
+<h3>E-Media Job Guide</h3>
+<p>Land jobs faster by understanding what employers actually look for — not guesswork, but proven hiring intelligence (Click Here).</p>
+</div>
+</div>
+<div id="ats" class="tab-content">
+<div class="tool-feature" onclick="window.open('https://selar.com/1a6aw9p9k2','_blank')">
+<i class="fas fa-robot"></i>
+<h3>ATS Scanner</h3>
+<p>Review your CV for ATS compliance and eliminate the silent rejection that stops most applications before human review.  (Click Here).</p>
+</div>
+</div>
+<div id="cover" class="tab-content">
+<div class="tool-feature" onclick="window.open('https://selar.com/749qk79719','_blank')">
+<i class="fas fa-file-alt"></i>
+<h3>Smart Cover Letter</h3>
+<p>Use a smart cover letter structure that positions you as a strong match, not just another applicant.   (Click Here).</p>
+</div>
+</div>
+</div>
+</section>
+<!-- ADMIN LOGIN -->
+<section class="section">
+<div class="section-header flex"><i class="fas fa-lock"></i><h2>Admin Login</h2></div>
+<div class="section-content">
+<form id="loginForm">
+<input id="pass" type="password" placeholder="Admin Password" required>
+<button class="btn" type="submit">Enter Dashboard</button>
+</form>
+</div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="adminPanel" class="section">
+<div class="section-header flex"><i class="fas fa-tachometer-alt"></i><h2>Dashboard</h2></div>
+<div class="section-content">
+<div class="grid">
+<div>
+<h3><i class="fas fa-plus"></i> Post Job (Max 20)</h3>
+<form id="jobForm">
+<input id="jT" placeholder="Job Title" required>
+<input id="jC" placeholder="Company" required>
+<select id="jType">
+<option value="onsite">Onsite</option>
+<option value="remote" selected>Remote</option>
+<option value="hybrid">Hybrid</option>
+</select>
+<input id="jL" placeholder="Location">
+<textarea id="jD" placeholder="Description"></textarea>
+<button class="btn" type="submit">Post Live</button>
+</form>
+</div>
+<div>
+<h3><i class="fas fa-list"></i> Manage Jobs</h3>
+<div id="jobList"></div>
+</div>
+</div>
+<div style="margin-top:2rem">
+<h3 style="display:flex;align-items:center;gap:.5rem"><i class="fas fa-inbox"></i> Inbox 
+<label style="display:flex;align-items:center;gap:.3rem;margin-left:auto;font-size:.9rem">
+<input type="checkbox" id="selectAllInbox"> Select All
+<button id="deleteSelected" class="btn-sm btn-danger">Delete Selected</button>
+</label></h3>
+<div id="inbox"></div>
+</div>
+<div id="chat" class="chat-box"></div>
+<form id="replyForm">
+<textarea id="rMsg" placeholder="Reply"></textarea>
+<button class="btn" type="submit">Send</button>
+</form>
+</div>
+</section>
+</div>
+
+<footer><div class="container">© 2026 E-Mediajobsite | Eminent Media</div></footer>
+<!-- SERVICE BOARD -->
+<section class="section">
+<div class="section-header flex"><i class="fas fa-handshake"></i><h2>Service Board</h2></div>
+<div class="section-content" style="text-align:center;padding:3rem">
+<div class="tool-feature" onclick="window.open('https://mtechconsult.github.io/Em-Service-board/','_blank')">
+<i class="fas fa-users-cog"></i>
+<h3>Professional Matching</h3>
+<p>Access our premium service board for verified professional matching, career consulting, and exclusive opportunities.</p>
+<button class="btn" style="max-width:300px;margin:1.5rem auto 0">Visit Service Board</button>
+</div>
+</div>
+</section>
+
+<script>
+(function() {
+    'use strict';
+    
+    const P = "1E8m3i4n2e6nt./@Owner";
+    let J = JSON.parse(localStorage.getItem('jobs') || '[]');
+    let M = JSON.parse(localStorage.getItem('msgs') || '[]');
+    let L = JSON.parse(localStorage.getItem('likes') || '{}');
+    let C = null;
+    let selectedInbox = new Set();
+
+    if (J.length > 20) J = J.slice(0, 20);
+
+    function switchTab(e) {
+        const tab = e.currentTarget;
+        const targetId = tab.getAttribute('data-tab');
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(targetId).classList.add('active');
+    }
+
+    function renderJobs() {
+        const jobsContainer = document.getElementById('jobs');
+        if (J.length === 0) {
+            jobsContainer.innerHTML = '<div style="text-align:center;padding:3rem;color:#94a3b8"><i class="fas fa-briefcase" style="font-size:3.5rem;opacity:.4"></i><p>No jobs yet</p></div>';
+            return;
+        }
+        jobsContainer.innerHTML = J.map(job => `
+            <div class="job-card">
+                <div class="job-header">
+                    <div style="flex:1;">
+                        <div class="job-title">${escapeHtml(job.title)}</div>
+                        <div class="job-meta">
+                            <i class="fas fa-building"></i>${escapeHtml(job.company)} 
+                            <i class="fas fa-map-marker-alt"></i>${escapeHtml(job.location || 'TBD')}
+                        </div>
+                    </div>
+                    <span class="job-type ${job.type}">${job.type.toUpperCase()}</span>
+                </div>
+                <div>${escapeHtml(job.description).substring(0,180)}${job.description.length > 180 ? '...' : ''}</div>
+                <div class="job-actions">
+                    <div class="share-to">Share to:</div>
+                    <button class="social-btn fb" onclick="window.shareJob(${job.id},'facebook')" title="Facebook"><i class="fab fa-facebook-f"></i></button>
+                    <button class="social-btn li" onclick="window.shareJob(${job.id},'linkedin')" title="LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                    <button class="social-btn wa" onclick="window.shareJob(${job.id},'whatsapp')" title="WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                    <button class="social-btn tw" onclick="window.shareJob(${job.id},'twitter')" title="Twitter"><i class="fab fa-twitter"></i></button>
+                    <button class="like-btn ${L[job.id] ? 'liked' : ''}" onclick="window.likeJob(${job.id})">
+                        <i class="fas fa-heart"></i> ${L[job.id] || 0}
+                    </button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    window.shareJob = function(id,p) {
+        const job = J.find(j => j.id == id);
+        if (!job) return;
+        const t = encodeURIComponent(`${job.title} at ${job.company}`);
+        const u = encodeURIComponent(location.href);
+        const s = {facebook:`https://www.facebook.com/sharer/sharer.php?u=${u}&quote=${t}`,linkedin:`https://www.linkedin.com/sharing/share-offsite/?url=${u}`,whatsapp:`https://wa.me/?text=${t}%20${u}`,twitter:`https://twitter.com/intent/tweet?text=${t}&url=${u}`};
+        window.open(s[p], '_blank', 'width=600,height=400');
+    };
+
+    window.likeJob = function(id) {
+        L[id] = (L[id] || 0) + 1;
+        localStorage.setItem('likes', JSON.stringify(L));
+        renderJobs();
+    };
+        window.deleteJob = function(id) {
+        if (confirm('Delete job?')) {
+            J = J.filter(j => j.id != id);
+            delete L[id];
+            localStorage.setItem('jobs', JSON.stringify(J));
+            localStorage.setItem('likes', JSON.stringify(L));
+            renderJobs();
+            renderJobList();
+        }
+    };
+
+    window.deleteInboxItem = function(id) {
+        if (confirm('Delete this conversation?')) {
+            M = M.filter(m => m.id != id);
+            if (C == id) C = null;
+            localStorage.setItem('msgs', JSON.stringify(M));
+            renderInbox();
+            document.getElementById('chat').innerHTML = '';
+        }
+    };
+
+    window.toggleInboxSelection = function(id, checkbox) {
+        if (checkbox.checked) {
+            selectedInbox.add(id);
+        } else {
+            selectedInbox.delete(id);
+        }
+        updateDeleteButton();
+    };
+
+    function updateDeleteButton() {
+        const deleteBtn = document.getElementById('deleteSelected');
+        const selectAll = document.getElementById('selectAllInbox');
+        deleteBtn.style.display = selectedInbox.size > 0 ? 'inline-block' : 'none';
+        if (selectedInbox.size === 0) {
+            selectAll.indeterminate = false;
+            selectAll.checked = false;
+        }
+    }
+
+    window.deleteSelectedInbox = function() {
+        if (selectedInbox.size === 0) return;
+        if (confirm(`Delete ${selectedInbox.size} conversation${selectedInbox.size > 1 ? 's' : ''}?`)) {
+            M = M.filter(m => !selectedInbox.has(m.id));
+            if (Array.from(selectedInbox).includes(C)) C = null;
+            selectedInbox.clear();
+            localStorage.setItem('msgs', JSON.stringify(M));
+            renderInbox();
+            document.getElementById('chat').innerHTML = '';
+            updateDeleteButton();
+        }
+    };
+
+    function renderJobList() {
+        const jobList = document.getElementById('jobList');
+        if (J.length === 0) {
+            jobList.innerHTML = '<div style="padding:2rem;text-align:center;color:#94a3b8">No jobs posted</div>';
+            return;
+        }
+        jobList.innerHTML = J.map(job => `
+            <div class="flex job-admin-item">
+                <div>${escapeHtml(job.title)} - ${escapeHtml(job.company)}</div>
+                <button class="btn btn-danger btn-sm" onclick="window.deleteJob(${job.id}); return false;">Delete</button>
+            </div>
+        `).join('');
+    }
+
+    function renderInbox() {
+        const inbox = document.getElementById('inbox');
+        if (M.length === 0) {
+            inbox.innerHTML = '<div style="padding:2rem;text-align:center;color:#94a3b8"><i class="fas fa-inbox" style="font-size:3rem;opacity:.4"></i><p>No messages</p></div>';
+            updateDeleteButton();
+            return;
+        }
+        inbox.innerHTML = M.map(msg => `
+            <div class="inbox-item ${C == msg.id ? 'active' : ''}">
+                <label style="display:flex;align-items:center;gap:.8rem;cursor:pointer;flex:1">
+                    <input type="checkbox" class="inbox-checkbox" onchange="window.toggleInboxSelection(${msg.id}, this)" ${selectedInbox.has(msg.id) ? 'checked' : ''}>
+                    <div onclick="window.selectChat(${msg.id}); event.stopPropagation()">
+                        <div class="inbox-header">${escapeHtml(msg.name)}</div>
+                        <div>${escapeHtml(msg.email)}</div>
+                    </div>
+                </label>
+                <div class="inbox-controls">
+                    <button class="btn btn-danger btn-sm" onclick="window.deleteInboxItem(${msg.id}); event.stopPropagation(); return false;" title="Delete">×</button>
+                </div>
+            </div>
+        `).join('');
+        updateDeleteButton();
+    }
+
+    window.selectChat = function(id) {
+        C = id;
+        const message = M.find(m => m.id == id);
+        if (message) {
+            document.getElementById('chat').innerHTML = message.chat.map(c => 
+                `<div class="msg msg-${c.from}">${escapeHtml(c.text)}</div>`
+            ).join('');
+            renderInbox();
+            document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
+        }
+    };
+
+    function escapeHtml(text) {
+        const map = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'};
+        return text.replace(/[&<>"']/g, m => map[m]);
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const passInput = document.getElementById('pass');
+        if (passInput.value === P) {
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            renderJobList();
+            renderInbox();
+        } else {
+            alert('Access Denied');
+            passInput.style.borderColor = '#ef4444';
+            setTimeout(() => passInput.style.borderColor = '#e2e8f0', 1500);
+        }
+    });
+
+    document.getElementById('jobForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (J.length < 20) {
+            const formData = {
+                id: Date.now(),
+                title: document.getElementById('jT').value,
+                company: document.getElementById('jC').value,
+                type: document.getElementById('jType').value,
+                location: document.getElementById('jL').value,
+                description: document.getElementById('jD').value
+            };
+            J.unshift(formData);
+            localStorage.setItem('jobs', JSON.stringify(J));
+            this.reset();
+            renderJobs();
+            renderJobList();
+            alert('Job posted live!');
+        } else {
+            alert('Max 20 jobs reached');
+        }
+    });
+
+    document.getElementById('replyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (C) {
+            const replyText = document.getElementById('rMsg').value;
+            const message = M.find(m => m.id == C);
+            if (message) {
+                message.chat.push({from: 'admin', text: replyText});
+                localStorage.setItem('msgs', JSON.stringify(M));
+                this.reset();
+                window.selectChat(C);
+            }
+        }
+    });
+
+    document.getElementById('selectAllInbox').addEventListener('change', function(e) {
+        const checkboxes = document.querySelectorAll('.inbox-checkbox');
+        selectedInbox.clear();
+        if (e.target.checked) {
+            M.forEach(msg => selectedInbox.add(msg.id));
+        }
+        checkboxes.forEach(cb => {
+            cb.checked = e.target.checked;
+        });
+        updateDeleteButton();
+    });
+
+    document.getElementById('deleteSelected').onclick = window.deleteSelectedInbox;
+
+    document.querySelectorAll('.tab').forEach(tab => tab.addEventListener('click', switchTab));
+
+    window.addEventListener('load', function() {
+        renderJobs();
+        document.getElementById('jType').selectedIndex = 1;
+    });
+})();
+</script>
+</body>
+</html>
